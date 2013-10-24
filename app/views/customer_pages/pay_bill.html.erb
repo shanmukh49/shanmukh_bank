@@ -1,0 +1,17 @@
+<h2>Pay Bill</h2>
+
+<%= simple_form_for(@customer_transaction) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.hidden_field :transaction_type, :value => 1 %>
+  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+  <%= f.hidden_field :transaction_date, :value => Time.now.to_date %>
+
+  <%= f.input :payee_id, :label => 'Select Bill Payee', :collection => @payees %>
+
+  <%= f.input :amount, label: "Amount of Bill" %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Pay Bill" %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h2>Welcome to the Bank of Shanmukh</h2>
+
+
+<h4>
+  <%= @customer.name %>, welcome to the online banking functions. Please choose from the following options:
+</h4>
+
+<p>&nbsp;</p>
+
+<div class="content-box">
+  <h4>Available Functions</h4>
+  <br>
+  <ul class="unstyled">
+    <li><%= link_to "Account Review of Transactions", list_transactions_path %></li>
+    <li><%= link_to "Transfer Money", transfer_money_path %></li>
+    <li><%= link_to "Pay Bill", pay_bill_path %></li>
+  </ul>
+</div>
+
+<div class="controls-box well">
+  <h4>Your Account</h4>
+  <br>
+
+  <p><strong>Name</strong>: <%= @customer.name %>
+  <p><strong>Account Balance</strong>: <%= @customer.account_balance %>
+
+</div>
+
+<div class="content-clear"></div>

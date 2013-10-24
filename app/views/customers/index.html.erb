@@ -1,0 +1,28 @@
+<h1>List Customers</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Account Balance</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= link_to customer.username, customer_path(customer) %></td>
+        <td>$<%= customer.account_balance %></td>
+        <td><%= customer.created_at.to_formatted_s(:long) %></td>
+        <td>
+          <%= link_to 'Edit', edit_customer_path(customer), :class => 'btn btn-mini' %>
+          <%= link_to 'Delete', customer_path(customer), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_customer_path, :class => 'btn btn-primary' %>

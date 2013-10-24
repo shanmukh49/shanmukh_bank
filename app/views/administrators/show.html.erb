@@ -1,0 +1,22 @@
+<h1>Administrator</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @administrator.name %>
+</p>
+
+<p>
+  <b>Username</b><br>
+  <%= @administrator.username %>
+</p>
+
+<p>
+  <b>Date created</b><br>
+  <%= @administrator.created_at.to_formatted_s(:long)  %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Administrator Listing', administrators_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_administrator_path(@administrator), :class => 'btn' %>
+  <%= link_to 'Delete', administrator_path(@administrator), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @customer_transaction.customer_id %>
+</p>
+
+<p>
+  <b>Recipient customer:</b>
+  <%= @customer_transaction.recipient_customer_id %>
+</p>
+
+<p>
+  <b>Payee:</b>
+  <%= @customer_transaction.payee_id %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @customer_transaction.amount %>
+</p>
+
+<p>
+  <b>Transaction date:</b>
+  <%= @customer_transaction.transaction_date %>
+</p>
+
+<p>
+  <b>Transaction type:</b>
+  <%= @customer_transaction.transaction_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_customer_transaction_path(@customer_transaction) %> |
+<%= link_to 'Back', customer_transactions_path %>

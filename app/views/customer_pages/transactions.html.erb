@@ -1,0 +1,42 @@
+<% provide(:title, 'List Transactions') %>
+
+<h1>Listing Transactions</h1>
+
+<% if @customer_transactions.any? %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>Transaction type</th>
+        <th>Recipient / Payee</th>
+        <th>Amount</th>
+        <th>Transaction date</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <% @customer_transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.id %></td>
+        <td><%= transaction.type %></td>
+        <td>
+          <% if transaction.transaction_type == 0 %>
+              <% recipient_customer = Customer.find(transaction.recipient_customer_id) %>
+              <%= recipient_customer.name %>
+          <% elsif transaction.transaction_type == 1 %>
+            <% payee = Payee.find(transaction.payee_id) %>
+            <%= payee.name %>
+          <% end %>
+        </td>
+        <td><%= transaction.amount %></td>
+        <td><%= transaction.transaction_date %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+
+<h4>Your account does not have any transactions</h4>
+<% end %>

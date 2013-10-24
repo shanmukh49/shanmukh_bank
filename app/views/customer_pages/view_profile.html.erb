@@ -1,0 +1,26 @@
+<% provide(:title, current_customer.name) %>
+<h2>Your Profile</h2>
+
+<p>
+  <b>Name</b><br>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <b>Username</b><br>
+  <%= @customer.username %>
+</p>
+
+<p>
+  <b>Account Balance</b><br>
+  <%= @customer.account_balance  %>
+</p>
+
+<p>
+  <b>Date created</b><br>
+  <%= @customer.created_at.to_formatted_s(:long)  %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Edit', edit_profile_path(@customer), :class => 'btn' %>
+</div>

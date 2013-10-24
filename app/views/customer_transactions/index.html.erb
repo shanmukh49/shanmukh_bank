@@ -1,0 +1,46 @@
+<h1>Listing All Customer Transactions</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Transaction type</th>
+      <th>Customer</th>
+      <th>Recipient</th>
+      <th>Amount</th>
+      <th>Transaction date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @customer_transactions.each do |customer_transaction| %>
+    <tr>
+      <td><%= customer_transaction.type %></td>
+      <td>
+        <% customer = Customer.find(customer_transaction.customer_id) %>
+        <%= customer.name %>
+      </td>
+      <td>
+        <% if customer_transaction.transaction_type == 0 %>
+          <% recipient_customer = Customer.find(customer_transaction.recipient_customer_id) %>
+          <%= recipient_customer.name %>
+        <% elsif customer_transaction.transaction_type == 1 %>
+          <% payee = Payee.find(customer_transaction.payee_id) %>
+          <%= payee.name %>
+          <%#= customer_transaction.payee_id %>
+        <% end %>
+      </td>
+      <td><%= customer_transaction.amount %></td>
+      <td><%= customer_transaction.transaction_date %></td>
+      <td>
+        <%= link_to 'Edit', edit_customer_transaction_path(customer_transaction), :class => 'btn btn-mini' %>
+        <%= link_to 'Delete', customer_transaction_path(customer_transaction), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Customer transaction', new_customer_transaction_path %>

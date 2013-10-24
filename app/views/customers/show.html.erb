@@ -1,0 +1,22 @@
+<h1>View Customer</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <b>Username</b><br>
+  <%= @customer.username %>
+</p>
+
+<p>
+  <b>Date created</b><br>
+  <%= @customer.created_at.to_formatted_s(:long)  %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Customer Listing', customers_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_customer_path(@customer), :class => 'btn' %>
+  <%= link_to 'Delete', customer_path(@customer), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

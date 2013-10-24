@@ -1,0 +1,74 @@
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <% if signed_in? %>
+        <%= link_to "bank of shanmukh", customer_home_path, id: "logo" %>
+      <% elsif admin_signed_in? %>
+        <%= link_to "bank of shanmukh", administrator_home_path, id: "logo" %>
+      <% else %>
+        <%= link_to "bank of shanmukh", root_path, id: "logo" %>
+      <% end %>
+      <nav>
+        <ul class="nav pull-right">
+          <% if signed_in? %>
+          <li><%= link_to "Home",    customer_home_path %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Customer Functions
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Account Review", list_transactions_path %></li>
+                <li><%= link_to "Transfer Money", transfer_money_path %></li>
+                <li><%= link_to "Pay Bills", pay_bill_path %></li>
+              </ul>
+            </li>
+
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", view_profile_path %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "Home",    administrator_home_path %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Administrator Functions
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "View All Transactions", customer_transactions_path %></li>
+                <li><%= link_to "Manage Customers", customers_path %></li>
+                <li><%= link_to "Manage Administrators", administrators_path %></li>
+                <li><%= link_to "Manage Payees", payees_path %></li>
+              </ul>
+            </li>
+
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_administrator %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", admin_signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Home",    root_path %></li>
+            <li><%= link_to "Help",    help_path %></li>
+            <li><%= link_to "Customer Sign in", signin_path %></li>
+            <li><%= link_to "Administrator Sign in", admin_signin_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

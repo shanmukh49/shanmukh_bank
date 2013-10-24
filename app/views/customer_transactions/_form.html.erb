@@ -1,0 +1,16 @@
+<%= simple_form_for(@customer_transaction) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :customer_id %>
+    <%= f.input :recipient_customer_id %>
+    <%= f.input :payee_id %>
+    <%= f.input :amount %>
+    <%= f.input :transaction_date %>
+    <%= f.input :transaction_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
