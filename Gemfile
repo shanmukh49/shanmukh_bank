@@ -7,6 +7,8 @@ gem 'therubyracer'
 gem 'execjs'
 gem 'mysql2'
 gem 'nokogiri', '1.5.9'
+gem 'heroku'
+gem 'haml'
 group :development, :test do
   # gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.8.1'
